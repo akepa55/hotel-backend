@@ -11,7 +11,7 @@ import java.util.Optional;
 public class HotelManager {
 
     private HotelRepository hotelRepository;
-    
+
     @Autowired
     public HotelManager(HotelRepository hotelRepository) {
         this.hotelRepository = hotelRepository;

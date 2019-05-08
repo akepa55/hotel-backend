@@ -1,5 +1,7 @@
 package pl.tim.hotelbackend.entity;
 
+import com.sun.org.glassfish.gmbal.NameValue;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

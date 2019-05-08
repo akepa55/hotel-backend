@@ -50,7 +50,6 @@ public class HotelController {
         return hotelManager.findById(id);
     }
 
-
     /*Just like above, we listen under the
     localhost:8080/tim/hotels address but for POST calls this time.
     We only accept POST calls that have a valid JSON Hotel object and if that's so, then we add the new hotel to DB.
