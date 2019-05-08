@@ -6,14 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-/*The entity annotations will be uncommented once we add a proper DB.
-The Id and GeneratedValue is crucial for proper identification with the tables in db.
- */
-//@Entity
+@Entity
 public class Hotel {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;

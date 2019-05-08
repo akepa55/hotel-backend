@@ -1,5 +1,6 @@
 package pl.tim.hotelbackend.repository;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pl.tim.hotelbackend.entity.Hotel;
 
@@ -11,14 +12,11 @@ import java.util.Optional;
 atm it's only a stupid list, but y'all gonna add some proper DB later
  */
 @Repository
-public class HotelRepository {
-    private List<Hotel> hotels;
+public interface HotelRepository extends CrudRepository<Hotel, Long> {
 
-    public HotelRepository() {
-        hotels = new ArrayList<>();
-        hotels.add(new Hotel(1L, "Groman", "Hotel groman to fajny hotel", 3, "Pruszków, Wojska Polskiego 500", 52.1101706d, 20.888284d));
-    }
+    //        hotels.add(new Hotel(1L, "Groman", "Hotel groman to fajny hotel", 3, "Pruszków, Wojska Polskiego 500", 52.1101706d, 20.888284d));
 
+    /*
     public List<Hotel> getAll() {
         return hotels;
     }
@@ -34,4 +32,5 @@ public class HotelRepository {
     public void delete(Long id) {
         hotels.removeIf(hotel -> hotel.getId() == id);
     }
+    */
 }

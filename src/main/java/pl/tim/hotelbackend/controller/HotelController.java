@@ -3,6 +3,7 @@ package pl.tim.hotelbackend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.tim.hotelbackend.entity.Hotel;
+import pl.tim.hotelbackend.manager.HotelManager;
 import pl.tim.hotelbackend.repository.HotelRepository;
 
 import java.util.List;
@@ -20,12 +21,12 @@ And every other mapping added from now on, will be added to this one
 @RequestMapping("/tim/hotels")
 public class HotelController {
 
-    private HotelRepository hotelRepository;
+    private HotelManager hotelManager;
 
     //We autowire this in constructor so spring auto-magically instantiates our repository
     @Autowired
-    public HotelController(HotelRepository hotelRepository) {
-        this.hotelRepository = hotelRepository;
+    public HotelController(HotelManager hotelRepository) {
+        this.hotelManager = hotelRepository;
     }
 
     /*This method will be called whenever we are hit with a GET call under the
@@ -33,8 +34,8 @@ public class HotelController {
     as a response we will return every hotel object in JSON from our repo.
     */
     @GetMapping("/all")
-    public List<Hotel> getHotels() {
-        return hotelRepository.getAll();
+    public Iterable<Hotel> getHotels() {
+        return hotelManager.findAll();
     }
 
     /*This method has a GET mapping without a name so this means that we listen for any GET
@@ -46,7 +47,7 @@ public class HotelController {
      */
     @GetMapping
     public Optional<Hotel> getHotelById(@RequestParam Long id) {
-        return hotelRepository.getHotelById(id);
+        return hotelManager.findById(id);
     }
 
 
@@ -56,8 +57,10 @@ public class HotelController {
      */
     @PostMapping
     public void addHotel(@RequestBody Hotel hotel) {
-        hotelRepository.add(hotel);
+        hotelManager.save(hotel);
     }
+
+    //TODO: Add PUT as well
 
     /*Again like above we listen under
     localhost:8080/tim/hotels but for DELETE calls.
@@ -66,6 +69,6 @@ public class HotelController {
     */
     @DeleteMapping
     public void deleteHotel(@RequestParam Long id) {
-        hotelRepository.delete(id);
+        hotelManager.deleteById(id);
     }
 }
