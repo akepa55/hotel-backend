@@ -19,11 +19,16 @@ localhost:8080/tim/hotels
 And every other mapping added from now on, will be added to this one
 */
 @RequestMapping("/tim/hotels")
+
+/*This allows apps from different protocols/ports to access every endpoint here
+this can be also added to certain methods only (even by specifying an address directly)
+*/
+@CrossOrigin
 public class HotelController {
 
     private HotelManager hotelManager;
 
-    //We autowire this in constructor so spring auto-magically instantiates our repository
+    //We autowire this in constructor so spring auto-magically instantiates our repository later
     @Autowired
     public HotelController(HotelManager hotelRepository) {
         this.hotelManager = hotelRepository;
@@ -53,7 +58,7 @@ public class HotelController {
     /*Just like above, we listen under the
     localhost:8080/tim/hotels address but for POST calls this time.
     We only accept POST calls that have a valid JSON Hotel object and if that's so, then we add the new hotel to DB.
-     */
+    */
     @PostMapping
     public void addHotel(@RequestBody Hotel hotel) {
         hotelManager.save(hotel);

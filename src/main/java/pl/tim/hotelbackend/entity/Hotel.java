@@ -1,12 +1,9 @@
 package pl.tim.hotelbackend.entity;
 
-import com.sun.org.glassfish.gmbal.NameValue;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 
 @Entity
 public class Hotel {
@@ -21,9 +18,7 @@ public class Hotel {
     private Double latitude;
     private Double longitude;
 
-    public Hotel() {
-
-    }
+    public Hotel() { }
 
     public Hotel(Long id, String name, String description, Integer michelinStars, String address, Double latitude, Double longitude) {
         this.id = id;
