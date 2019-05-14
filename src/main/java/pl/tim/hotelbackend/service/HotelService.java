@@ -1,4 +1,4 @@
-package pl.tim.hotelbackend.manager;
+package pl.tim.hotelbackend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,18 +8,20 @@ import pl.tim.hotelbackend.repository.HotelRepository;
 import java.util.Optional;
 
 @Service
-public class HotelManager {
+public class HotelService {
 
     private HotelRepository hotelRepository;
 
     @Autowired
-    public HotelManager(HotelRepository hotelRepository) {
+    public HotelService(HotelRepository hotelRepository) {
         this.hotelRepository = hotelRepository;
     }
 
     public Iterable<Hotel> findAll() {
         return hotelRepository.findAll();
     }
+
+    public Iterable<Hotel> findAllByNameLike(String fragment) { return hotelRepository.findAllByNameContainsIgnoreCase(fragment); }
 
     public Optional<Hotel> findById(Long id) {
         return hotelRepository.findById(id);
