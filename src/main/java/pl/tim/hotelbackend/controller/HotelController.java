@@ -36,7 +36,8 @@ public class HotelController {
         hotelService.save(hotel);
     }
 
-    //TODO: Add PUT as well
+    @PutMapping
+    public void updateHotel(@RequestBody Hotel hotel) { hotelService.save(hotel); }
 
     @DeleteMapping("/{id}")
     public void deleteHotel(@PathVariable Long id) {
